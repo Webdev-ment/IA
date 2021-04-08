@@ -1,18 +1,3 @@
-<?php
-
-$IA_db = mysqli_connect("localhost", "root", ""); 
-if (!$IA_db) {
-    die(mysqli_error($IA_db));
-  }
-  if(mysqli_select_db($IA_db, "ia_proj")){
-    //echo "Database connection sucessful!"; 
-  }else{
-  echo "Database connection unsuccessful";
-  die(mysqli_error($IA_db));
-  }
-  
-
-?>
 <html>
 <head>
 <title>Home</title>
@@ -36,7 +21,7 @@ if (!$IA_db) {
 </nav>
 <body class="bg-dark">
     <div class="p-d">  
-        <div class="card right" style="background-color: ;">
+        <div class="card right" style="background-color:white;">
             <div class="card-body">
                 <h1 class="card-title" style="text-align: center; color: #8d0404">Login Here!</h1>
                 <form action="" method="POST">
