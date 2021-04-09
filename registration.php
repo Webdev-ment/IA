@@ -7,13 +7,15 @@
     <title>Registration</title>
 </head>
 <body>
-    <form action="Controllers/ReceptionistController.php" method="post">
+    <form action="./register.php" method="POST">
         <input type="text" name="name" placeholder="Name">
         <input type="text" name="address" placeholder="Address">
         <input type="email" name="email" id="" placeholder="Email Address">
         <input type="text" name="phone" placeholder="Phone Number">
         <input type="password" name="password" id="" placeholder="Password">
         <input type="password" name="confirm" id="" placeholder="Confirm Password">
+        <input type="radio" name="user"  value="receptionist" id=""> Receptionist <br>
+        <input type="radio" name="user" value="doctor" id=""> Doctor
         <input type="submit" value="Sign Up">    
     </form>
 </body>

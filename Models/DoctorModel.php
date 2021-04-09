@@ -65,10 +65,11 @@ class DoctorModel extends BaseModel {
         $errors = array();
         if(empty($email) || empty($password)) $errors["Required"] = "All fields are required.";
         else {
-            $results = $this->query("select dct_password from doctor where dct_email = '{$email}'");
+            $results = $this->query("select * from doctor where dct_email = '{$email}'");
             if($results->num_rows > 0) {
                 $info = $results->fetch_assoc();
-                if(password_verify($password,$info["dct_password"])) return array("success" => true);
+                $info["type"] = "doctor";
+                if(password_verify($password,$info["dct_password"])) return array("success" => true, "current_user_info" => $info);
             }
             $errors["Credentials"] = "Invalid Credentials";
         }
@@ -83,12 +84,12 @@ class DoctorModel extends BaseModel {
      */
     public function authenticate(string $email, string $password): array {
         $validation = $this->validate_login($email,$password);
-        if($validation["success"]) return array("success" => true);
-        return array("success" => false, "messages" => $validation["messages"]);
+        return $validation;
     }
 
     public function get_all(): array {
-        return array();
+        $results = $this->query("select * from doctor");
+        return $results->fetch_assoc();
     }
 }
 

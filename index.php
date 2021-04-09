@@ -24,7 +24,7 @@
         <div class="card right" style="background-color:white;">
             <div class="card-body">
                 <h1 class="card-title" style="text-align: center; color: #8d0404">Login Here!</h1>
-                <form action="./Controllers/ReceptionistController.php" method="POST">
+                <form action="./login.php" method="POST">
                     <div class="form-group" >
                         <label for="exampleInputEmail1">Email</label>
                         <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -34,7 +34,8 @@
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" name="password" class="form-control" id="exampleInputPassword1">                     
                     </div>                     
-                                        
+                    <input type="radio" name="user"  value="receptionist" id=""> Receptionist <br>
+                    <input type="radio" name="user" value="doctor" id=""> Doctor
                     <button type="submit" class="btn btn-warning">Login</button>
                 </form>
   </div>

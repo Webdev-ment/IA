@@ -65,10 +65,11 @@ class ReceptionistModel extends BaseModel {
         $errors = array();
         if(empty($email) || empty($password)) $errors["Required"] = "All fields are required.";
         else {
-            $results = $this->query("select rcp_password from receptionist where rcp_email = '{$email}'");
+            $results = $this->query("select * from receptionist where rcp_email = '{$email}'");
             if($results->num_rows > 0) {
                 $info = $results->fetch_assoc();
-                if(password_verify($password,$info["rcp_password"])) return array("success" => true);
+                $info["type"] = "receptionist";
+                if(password_verify($password,$info["rcp_password"])) return array("success" => true,"current_user_info" => $info);
             }
             $errors["Credentials"] = "Invalid Credentials";
         }
@@ -84,8 +85,7 @@ class ReceptionistModel extends BaseModel {
      */
     public function authenticate(string $email, string $password): array {
         $validation = $this->validate_login($email,$password);
-        if($validation["success"]) return array("success" => true);
-        return array("success" => false, "messages" => $validation["messages"]);
+        return $validation;
     }
 
     public function get_all(): array {

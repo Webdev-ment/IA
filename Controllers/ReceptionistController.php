@@ -1,26 +1,30 @@
 <?php
 
-require_once("../Models/ReceptionistModel.php");
+require_once("./Models/ReceptionistModel.php");
 
+function login_receptionist(string $email, string $password): array {
+    try {
+        $connection = new ReceptionistModel();
+        $results = $connection->authenticate(trim($email),trim($password));
+        return $results;
+    }
+    catch(Throwable $err){}
+    finally {
+        $connection->close();
+    }
 
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
+}
 
-    // $name = trim($_POST["name"]);
-    // $address = trim($_POST["address"]);
-    $email = trim($_POST["email"]);
-    // $phone = trim($_POST["phone"]);
-    $password = trim($_POST["password"]);
-    // $confirm = trim($_POST["confirm"]);
-    $connection = new ReceptionistModel();
-    // $results = $connection->register($name,$address,$email,$phone,$password,$confirm);
-
-    // if($results["success"]) echo "<h1>You are now registered</h1>";
-    // else print_r($results["messages"]);
-
-    $results = $connection->authenticate($email,$password);
-    if($results["success"]) echo "<h1>You have successfully logged in</h1>";
-    else print_r($results["messages"]);
+function register_receptionist(string $name,string $address,string $email,string $phone,string $password,string $confirm): array {
+    try {
+        $connection = new ReceptionistModel();
+        $results = $connection->register(trim($name),trim($address),trim($email),trim($phone),trim($password),trim($confirm));
+        return $results;
+    }
+    catch(Throwable $err){}
+    finally {
+        $connection->close();
+    }
 }
 
 
