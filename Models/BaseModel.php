@@ -1,8 +1,5 @@
 <?php
 
-namespace Models;
-
-use mysqli;
 
 /**
  * The BaseModel that represents a basic connection to a database.
@@ -18,6 +15,17 @@ abstract class BaseModel extends mysqli {
     public function __construct() {
         parent::__construct(self::host,self::user,self::password,self::database,self::port);
     }
+
+    /**
+     * Searches for common registration errors found.
+     * @param string $name name of the user.
+     * @param string $address address of the user.
+     * @param string $email email of the user.
+     * @param string $phone phone number of the user.
+     * @param string $password password of the user.
+     * @param string $confirm password that is entered for the second time.
+     * @return array Errors found.
+     */
     protected function register_errors(string $name, string $address, string $email, string $phone, string $password, string $confirm): array {
         $errors = array();
         if(empty(trim($name)) || empty(trim($address)) || empty(trim($email)) || empty(trim($phone)) || empty(trim($password)) || empty(trim($confirm))) {

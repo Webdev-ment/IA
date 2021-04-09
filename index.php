@@ -5,7 +5,7 @@
 <nav class="navbar navbar-expand-sm bg-warning navbar-dark sticky-top" >
 <ul class="navbar-nav" style="font-weight:bold;">
     <li class="nav-item active">
-      <a class="nav-link" href="#" >Home</a>
+      <a class="nav-link" href="./registration.php" >Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Services</a>
@@ -24,15 +24,15 @@
         <div class="card right" style="background-color:white;">
             <div class="card-body">
                 <h1 class="card-title" style="text-align: center; color: #8d0404">Login Here!</h1>
-                <form action="" method="POST">
+                <form action="./Controllers/ReceptionistController.php" method="POST">
                     <div class="form-group" >
-                        <label for="exampleInputEmail1">Username</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="exampleInputEmail1">Email</label>
+                        <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
                         
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">                     
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">                     
                     </div>                     
                                         
                     <button type="submit" class="btn btn-warning">Login</button>
