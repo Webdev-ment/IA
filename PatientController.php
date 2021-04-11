@@ -14,12 +14,12 @@
 //     create_Patient($name, $DoB, $age, $address, $email, $phone);
 // }
 
-function create_Patient(string $name, string $DoB, int $age, string $address, string $email, string $phone)
+function create_Patient(string $name, string $dob, int $age, string $address, string $email, string $phone)
 {
     //if(isset($_POST))
     try{
         $connection = new PatientModel();
-        $results = $connection->AddPatient(trim($name), trim($DoB), trim($age), trim($address), trim($email), trim($phone));
+        $results = $connection->AddPatient(trim($name), trim($dob), trim($age), trim($address), trim($email), trim($phone));
         return $results;
     }
     catch(Throwable $err){}

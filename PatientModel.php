@@ -9,7 +9,7 @@ Class PatientModel extends BaseModel
       //   parent::__construct();
       // }
 
-      public function AddPatient(string $name, string $DoB, int $age, string $address, string $email, strong $phone)
+      public function AddPatient(string $name, string $dob, int $age, string $address, string $email, strong $phone)
       {
         if(empty($name) || empty($DoB) || empty($age) || empty($address) || empty($email) || empty($phone))
         {
@@ -26,7 +26,7 @@ Class PatientModel extends BaseModel
             pat_email char(30) NOT NULL,
             pat_phone INT(10) NOT NULL);");
 
-            $this->query("INSERT into Patient (pat_Name, pat_DoB, pat_Age, pat_Address, pat_Email, pat_phone) VALUES ({'$name'}, {'$DoB'}, {'$age'}, {'$address'}, {'$email'}, {'$phone'});");
+            $this->query("INSERT into Patient (pat_Name, pat_DoB, pat_Age, pat_Address, pat_Email, pat_phone) VALUES ({'$name'}, {'$dob'}, {'$age'}, {'$address'}, {'$email'}, {'$phone'});");
         }
         if($this->affected_rows > 0) return array("success" => true);
       }
