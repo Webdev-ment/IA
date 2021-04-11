@@ -5,41 +5,17 @@
  * The BaseModel that represents a basic connection to a database.
  */
  abstract class BaseModel extends mysqli {
-    protected $servername = "localhost";
-    protected $username = "root";
-    protected $password = "";
-    protected $database = "project";
-
-    __construct()
-    {
-        $db = mysqli_connect("localhost", "root", ""); 
-if (!$db) {
-         // terminate and give error message
-         die(mysqli_error($db));
-   }
-
-   if(mysqli_select_db($db, "ia_db")){
-      //  echo "Database connected Successfully";
-   }else{
-       echo "Database connection failed";
-       die(mysqli_error($db));
-   }
-    }
-
-    // protected $servername = "localhost";
-    // protected $username = "root";
-    // protected $password = "";
-
-    // protected const host = "localhost";
-    // protected const user = "root";
-    // protected const password = "";
-    // protected const database = "project";
-    // protected const port = "3306";
+    protected const host = "localhost";
+    protected const user = "root";
+    protected const password = "";
+    protected const database = "project";
+    protected const port = "3306";
     
 
-    // public function __construct() {
-    // parent::__construct(self::host,self::user,self::password,self::database, self::port);
-    //  try{
+    public function __construct() {
+    parent::__construct(self::host,self::user,self::password,self::database, self::port);
+    
+    // try{
     //     $conn = new mysqli(host, user, password, database);
     //     }
     //     catch (\Exception $e)
@@ -50,7 +26,7 @@ if (!$db) {
 
      // Create connection
  
-    // }
+    }
 
     /**
      * Searches for common registration errors found.
