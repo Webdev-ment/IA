@@ -68,15 +68,23 @@ class ReceptionistModel extends BaseModel {
             $results = $this->query("select * from receptionist where rcp_email = '{$email}'");
             if($results->num_rows > 0) {
                 $info = $results->fetch_assoc();
-                $info["type"] = "receptionist";
-                if(password_verify($password,$info["rcp_password"])) return array("success" => true,"current_user_info" => $info);
+                if(password_verify($password,$info["rcp_password"])) {
+                    //Create an associative array that will send back all the current user's information
+                    $session_details = array();
+                    $session_details["id"] = $info["rcp_id"];
+                    $session_details["name"] = $info["rcp_name"];
+                    $session_details["address"] = $info["rcp_address"];
+                    $session_details["phone"] = $info["rcp_phone"];
+                    $session_details["email"] = $info["rcp_email"];
+                    $session_details["type"] = "receptionist";
+                    return array("success" => true,"current_user_info" => $session_details);
+                }
             }
             $errors["Credentials"] = "Invalid Credentials";
         }
 
         if(array_key_exists("Required",$errors) || array_key_exists("Credentials",$errors)) return array("success" => false, "messages" => $errors);
     }
-
 
     /**
      * Authenticates a user of the system.

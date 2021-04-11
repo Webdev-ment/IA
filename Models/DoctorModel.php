@@ -68,8 +68,17 @@ class DoctorModel extends BaseModel {
             $results = $this->query("select * from doctor where dct_email = '{$email}'");
             if($results->num_rows > 0) {
                 $info = $results->fetch_assoc();
-                $info["type"] = "doctor";
-                if(password_verify($password,$info["dct_password"])) return array("success" => true, "current_user_info" => $info);
+                if(password_verify($password,$info["dct_password"])) {
+                    //Create an associative array that will send back all the current user's information
+                    $session_details = array();
+                    $session_details["id"] = $info["dct_id"];
+                    $session_details["name"] = $info["dct_name"];
+                    $session_details["address"] = $info["dct_address"];
+                    $session_details["phone"] = $info["dct_phone"];
+                    $session_details["email"] = $info["dct_email"];
+                    $session_details["type"] = "doctor";
+                    return array("success" => true, "current_user_info" => $session_details);
+                } 
             }
             $errors["Credentials"] = "Invalid Credentials";
         }
