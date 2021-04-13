@@ -18,11 +18,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         if($session_information["success"]) {
             //Create session with information here using $session_information["current_user_info"] and redirect
             $_SESSION["USER"] = $session_information["current_user_info"]; 
-            echo "<h1>Successfully Logged In";
+            header("Location: home.php");
         }
         else {
             //redirect to page with the errors presented using $session_information["messages"]
-            header("./index.php");
+            header("Location: index.php");
             print_r($session_information["messages"]);
         }
     }
