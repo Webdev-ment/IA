@@ -24,11 +24,15 @@ class ReceptionistModel extends BaseModel {
         $errors = $this->register_errors($name,$address,$email,$phone,$password,$confirm);
 
         if(!array_key_exists("Required",$errors)) {
-            $results = $this->query("select * from receptionist where rcp_email = '{$email}'");
+            $stmt = $this->prepare("select * from receptionist where rcp_email = ?");
+            $stmt->bind_param("s",$email);
+            $stmt->execute();
+            $results = $stmt->get_result();
+
             if($results->num_rows > 0) $errors["Email"] = "The email is already taken";
         }
         
-        if(array_key_exists("Required",$errors) || array_key_exists("Password",$errors) || array_key_exists("Email",$errors)) {
+        if(array_key_exists("Required",$errors) || array_key_exists("Password",$errors) || array_key_exists("Email",$errors) || array_key_exists("Strength",$errors)) {
             return array("success" => false, "messages" => $errors);
         }
         else return array("success" => true);
@@ -48,7 +52,10 @@ class ReceptionistModel extends BaseModel {
         $validation = $this->validate_registration($name,$address,$email,$phone,$password,$confirm);
         if($validation["success"]) {
             $password = password_hash($password,PASSWORD_BCRYPT);
-            $this->query("insert into receptionist (rcp_name,rcp_address,rcp_email,rcp_phone,rcp_password) VALUES('{$name}','{$address}','{$email}','{$phone}','{$password}');");
+            $stmt = $this->prepare("insert into receptionist (rcp_name,rcp_address,rcp_email,rcp_phone,rcp_password) VALUES(?,?,?,?,?);");
+            $stmt->bind_param("sssss",$name,$address,$email,$phone,$password);
+            $stmt->execute();
+
             if($this->affected_rows > 0) return array("success" => true);
         }
         return array("success" => false, "messages" => $validation["messages"]);
@@ -65,7 +72,10 @@ class ReceptionistModel extends BaseModel {
         $errors = array();
         if(empty($email) || empty($password)) $errors["Required"] = "All fields are required.";
         else {
-            $results = $this->query("select * from receptionist where rcp_email = '{$email}'");
+            $stmt = $this->prepare("select * from receptionist where rcp_email = ?");
+            $stmt->bind_param("s",$email);
+            $stmt->execute();
+            $results = $stmt->get_result();
             if($results->num_rows > 0) {
                 $info = $results->fetch_assoc();
                 if(password_verify($password,$info["rcp_password"])) {
@@ -96,15 +106,28 @@ class ReceptionistModel extends BaseModel {
         return $validation;
     }
 
-    public function get_all(): array {
-        return array();
+    /**
+     * Gets a specific receptionist's information.
+     * @param $id The id of the receptionist.
+     * @return array An array of the receptionist's information.
+     */
+    public function get_current_user($id): array {
+        $stmt = $this->prepare("select * from receptionist where rcp_id = ?");
+        $stmt->bind_param("i",$id);
+        $stmt->execute();
+        $results = $stmt->get_result();
+        $info = $results->fetch_assoc();
+        return $info;
     }
 
-    
 
-
+    /**
+     * Gets all the receptionists and their information.
+     * @return array All receptionists.
+     */
+    public function get_all(): array {
+        $results = $this->query("select * from receptionist");
+        return $results->fetch_assoc();
+    }
 }
-
-
-
 ?>

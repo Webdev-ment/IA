@@ -10,10 +10,12 @@ abstract class BaseModel extends mysqli {
     protected const password = "";
     protected const database = "project";
     protected const port = "3307";
+    protected const password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/';
     
 
     public function __construct() {
         parent::__construct(self::host,self::user,self::password,self::database,self::port);
+        if($this->connect_error) die("Connection Issue: ".$this->connect_error);
     }
 
     /**
@@ -35,6 +37,9 @@ abstract class BaseModel extends mysqli {
             if(trim($password) != trim($confirm)) {
                 $errors["Password"] = "Please ensure Password and Confirm Password are the same.";
             }
+            if(!preg_match(self::password_regex,$password)) {
+                $errors["Strength"] = "Password is not strong enough. Must contain the following: A minimum length of 8 characters, at least one digit, special character and uppercase letter.";
+            }
         }
         return $errors;
     }
@@ -48,6 +53,8 @@ abstract class BaseModel extends mysqli {
     abstract protected function register(string $name, string $address, string $email, string $phone, string $password, string $confirm): array;
 
     abstract protected function get_all(): array;
+
+    abstract protected function get_current_user($id): array;
 
 }
 

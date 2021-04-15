@@ -16,8 +16,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         else $register_information = register_doctor($_POST["name"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]); 
     
         if($register_information["success"]) {
-            //redirect to login page (index.php)
-            echo "<h1>Successfully Registered</h1>";
+            //Registration was successful. Redirect them to the login page.
+            header("Location: index.php");
         }
         else {
             //redirect to login with information about errors from $register_information["messages"]

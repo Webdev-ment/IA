@@ -1,7 +1,13 @@
 <?php
-
 require_once("./Models/ReceptionistModel.php");
 
+
+/**
+ * Attempts to log in a receptionist.
+ * @param $email Email of the receptionist.
+ * @param $password Password of the receptionist.
+ * @return array Receptionist's information if login was successful. Errors if it was not.
+ */
 function login_receptionist(string $email, string $password): array {
     try {
         $connection = new ReceptionistModel();
@@ -21,26 +27,25 @@ function register_receptionist(string $name,string $address,string $email,string
         $results = $connection->register(trim($name),trim($address),trim($email),trim($phone),trim($password),trim($confirm));
         return $results;
     }
-    catch(Throwable $err){}
+    catch(Throwable $err){
+        echo "An error occurred.";
+    }
     finally {
         $connection->close();
     }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if($_SERVER["REQUEST_METHOD"] == "GET") {
+    if(isset($_GET["allReceptionists"])) {
+        try {
+            $connection = new ReceptionistModel();
+            $receptionists = $connection->get_all();
+        }
+        catch(Throwable $err) {}
+        finally {
+            $connection->close();
+        }
+    }
+}
 ?>
