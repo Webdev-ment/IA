@@ -11,9 +11,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     else {
         if($_POST["user"] == "receptionist") {
-            $register_information = register_receptionist($_POST["name"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]);
+            $register_information = register_receptionist($_POST["fname"],$_POST["lname"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]);
         }
-        else $register_information = register_doctor($_POST["name"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]); 
+        else $register_information = register_doctor($_POST["fname"],$_POST["lname"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]); 
     
         if($register_information["success"]) {
             //Registration was successful. Redirect them to the login page.

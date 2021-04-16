@@ -8,7 +8,8 @@
 </head>
 <body>
     <form action="./register.php" method="POST">
-        <input type="text" name="name" placeholder="Name">
+        <input type="text" name="fname" placeholder="First Name">
+        <input type="text" name="lname" placeholder="Last Name">
         <input type="text" name="address" placeholder="Address">
         <input type="email" name="email" id="" placeholder="Email Address">
         <input type="text" name="phone" placeholder="Phone Number">

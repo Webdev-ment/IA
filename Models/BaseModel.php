@@ -20,7 +20,8 @@ abstract class BaseModel extends mysqli {
 
     /**
      * Searches for common registration errors found.
-     * @param string $name name of the user.
+     * @param string $fname first name of the user.
+     * @param string $lname last name of the user.
      * @param string $address address of the user.
      * @param string $email email of the user.
      * @param string $phone phone number of the user.
@@ -28,9 +29,9 @@ abstract class BaseModel extends mysqli {
      * @param string $confirm password that is entered for the second time.
      * @return array Errors found.
      */
-    protected function register_errors(string $name, string $address, string $email, string $phone, string $password, string $confirm): array {
+    protected function register_errors(string $fname, string $lname, string $address, string $email, string $phone, string $password, string $confirm): array {
         $errors = array();
-        if(empty(trim($name)) || empty(trim($address)) || empty(trim($email)) || empty(trim($phone)) || empty(trim($password)) || empty(trim($confirm))) {
+        if(empty(trim($fname)) || empty(trim($lname)) || empty(trim($address)) || empty(trim($email)) || empty(trim($phone)) || empty(trim($password)) || empty(trim($confirm))) {
             $errors["Required"] = "All fields are required.";
         }
         else {
@@ -44,13 +45,13 @@ abstract class BaseModel extends mysqli {
         return $errors;
     }
 
-    abstract protected function validate_registration(string $name, string $address, string $email, string $phone, string $password, string $confirm): array;
+    abstract protected function validate_registration(string $fame, string $lname, string $address, string $email, string $phone, string $password, string $confirm): array;
 
     abstract protected function validate_login(string $email, string $password): array;
 
     abstract protected function authenticate(string $email, string $password): array;
 
-    abstract protected function register(string $name, string $address, string $email, string $phone, string $password, string $confirm): array;
+    abstract protected function register(string $fname, string $lname, string $address, string $email, string $phone, string $password, string $confirm): array;
 
     abstract protected function get_all(): array;
 

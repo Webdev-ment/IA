@@ -20,10 +20,10 @@ function login_doctor(string $email, string $password): array {
 }
 
 
-function register_doctor(string $name,string $address,string $email,string $phone,string $password,string $confirm): array {
+function register_doctor(string $fname, string $lname,string $address,string $email,string $phone,string $password,string $confirm): array {
     try {
         $connection = new DoctorModel();
-        $results = $connection->register(trim($name),trim($address),trim($email),trim($phone),trim($password),trim($confirm));
+        $results = $connection->register(trim($fname),trim($lname),trim($address),trim($email),trim($phone),trim($password),trim($confirm));
         return $results;
     }
     catch(Throwable $err){}
