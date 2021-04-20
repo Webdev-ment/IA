@@ -5,13 +5,13 @@
 <nav class="navbar navbar-expand-sm bg-warning navbar-dark sticky-top" >
 <ul class="navbar-nav" style="font-weight:bold;">
     <li class="nav-item active">
-      <a class="nav-link" href="./registration.php" >Home</a>
+      <a class="nav-link" href="#" >Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="./registration.php">Register</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="#">Services</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">About Us</a>
     </li>
     <!-- <li class="nav-item">
       <a class="nav-link disabled" href="#">Disabled</a>
@@ -19,7 +19,7 @@
   </ul>
 
 </nav>
-<body class="bg-dark">
+<body class="body-bg bg-dark">
     <div class="p-d">  
         <div class="card right" style="background-color:white;">
             <div class="card-body">
@@ -33,9 +33,20 @@
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
                         <input type="password" name="password" class="form-control" id="exampleInputPassword1">                     
-                    </div>                     
-                    <input type="radio" name="user"  value="receptionist" id=""> Receptionist <br>
-                    <input type="radio" name="user" value="doctor" id=""> Doctor
+                    </div>  
+                    <div>
+                    <label for="exampleDataList" class="form-label">Occupation</label>
+                        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+                        <datalist id="datalistOptions">
+                          <option name="user" value="Doctor" >
+                          <option name="user" value="Receptionist">
+                          
+                        </datalist>
+                    </div>
+
+                    <!-- <input type="radio" name="user"  value="receptionist" id=""> Receptionist <br> <br>
+                    <input type="radio" name="user" value="doctor" id=""> Doctor -->
+                    <br>
                     <button type="submit" class="btn btn-warning">Login</button>
                 </form>
   </div>
