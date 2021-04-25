@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h1>Please select a button</h1>";
     }
     else {
-        if($_POST["user"] == "receptionist") $session_information = login_receptionist($_POST["email"],$_POST["password"]);
+        if($_POST["user"] == "Receptionist") $session_information = login_receptionist($_POST["email"],$_POST["password"]);
         else $session_information = login_doctor($_POST["email"],$_POST["password"]);
 
         if($session_information["success"]) {
