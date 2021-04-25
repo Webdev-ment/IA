@@ -13,7 +13,8 @@ class PatientModel
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "project";
+        //$dbname = "project";
+        $dbname = "ia_proj";
 
         echo "\nConnect called Successfully.";
 
@@ -74,7 +75,7 @@ class PatientModel
                 
             if ($this->conn->query($Insert) === TRUE)
             {
-                echo "\n Patient created succesfully.";
+                echo "\n Patient inserted succesfully.";
             }  
             else{
                 echo "\n Error inserting patient." . $this->conn->error;
@@ -112,24 +113,31 @@ class PatientModel
     // Function that displays all Patients insidee the database.
     public function get_all_Patients()
     {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        //$dbname = "project";
+        $dbname = "ia_proj";
+
         echo "\n Get all called successfully.";
 
+        // Create connection
+        $this->conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($this->conn->connect_error) {
+            die("Connection failed: " . $this->conn->connect_error);
+            }
+
         $all = "SELECT * FROM Patient";
+        $result = $this->conn->query($all);        
 
-        $this->conn->$all;
-        
-        $retval = mysqli_query( $all, $this->conn);
+        if ($result->num_rows > 0) {
 
-        if(! $retval)
-        {
-            echo "Could not get data: ". mysqli_error($this);
-        }
-
-        while($row = mysqli_fetch_array($retval, MYSQLI_ASSOC))
+        while($row = $result->fetch_assoc()) 
         {
             echo "First Name: " . $row["pat_fname"]. " Last Name: ". $row["pat_lname"]. " Gender: ". $row["pat_gender"]. " Date of Birth: ". $row["pat_dob"]. " Address: ".  $row["pat_address"]. " Email: ". $row["pat_email"]. " Phone: ". $row["pat_phone"];
         }
-        
+    }
         echo "Fetched data successfully.";
     }
 }

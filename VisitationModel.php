@@ -13,7 +13,8 @@ class Visitation
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $dbname = "project";
+        //$dbname = "project";
+        $dbname = "ia_proj";
 
         echo "\nConnect called Successfully.";
 
@@ -85,7 +86,21 @@ class Visitation
      // Function that displays all Visitations inside the database.
      public function get_all_Visitations()
      {
-         echo "\n Get all called successfully.";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        //$dbname = "project";
+        $dbname = "ia_proj";
+
+        echo "\n Get all called successfully.";
+
+         // Create connection
+         $this->conn = new mysqli($servername, $username, $password, $dbname);
+         // Check connection
+         if ($this->conn->connect_error) {
+             die("Connection failed: " . $this->conn->connect_error);
+             }
+
  
          $view = "SELECT * FROM Visitation";
          $result = $this->conn->query($view);
