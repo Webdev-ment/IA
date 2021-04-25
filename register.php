@@ -10,7 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h1>Please select a button.</h1>";
     }
     else {
-        if($_POST["user"] == "receptionist") {
+        if($_POST["user"] == "Receptionist") {
             $register_information = register_receptionist($_POST["fname"],$_POST["lname"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]);
         }
         else $register_information = register_doctor($_POST["fname"],$_POST["lname"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]); 
