@@ -14,6 +14,7 @@
         Email: <input type="text" name="email" placeholder="Enter Email..."></input>
         Phone Number: <input type="text" name="phone" placeholder="Enter Phone Number..."></input>
 
+        
         <input type="submit" name="insert" value="Insert"></input>
         <input type="submit" name="view" value="View"></input>
         </form>
