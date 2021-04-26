@@ -61,11 +61,11 @@
 
     <div class="row justify-content-center">
         <div class="col-4">
-        <button type="submit" name="insert" value="Insert" class="btn  patientbtn">Insert</button>
+        <button type="submit" name="insert" value="Insert" class="btn patientbtn">Create Record</button>
         </div>
-        <div class="col-4">
+        <!-- <div class="col-4">
         <button  type="submit" name="view" value="View" class="btn  patientbtn">View</button>
-        </div>
+        </div> -->
     </div>
 
     <br><br>
