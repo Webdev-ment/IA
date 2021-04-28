@@ -104,7 +104,7 @@ class PatientModel
         }
         else
         {
-            $Update = "UPDATE Product SET pat_fname='$fname', pat_lname='$lname', pat_gender='$gender', pat_dob='$dob', pat_age='$age', pat_address='$address', pat_email='$email', pat_phone='$phone' WHERE pat_id= '$ID' " ;
+            $Update = "UPDATE Patient SET pat_fname='$fname', pat_lname='$lname', pat_gender='$gender', pat_dob='$dob', pat_age='$age', pat_address='$address', pat_email='$email', pat_phone='$phone' WHERE pat_id= '$ID' " ;
 
             // Calls update query.
             if($this->conn->query($Update) === TRUE)

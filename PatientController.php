@@ -24,7 +24,7 @@ switch (true)
         echo "\n Edit detected successfully";
 
 
-        edit_Patient($_GET["edit_ID"], $_GET["edit_fname"], $_GET['edit_lname'], $_GET["edit_gender"], $_GET["edit_dob"], $_GET["edit_age"], $_GET["edit_address"], $_GET["edit_email"], $_GET["edit_phone"]);
+        edit_Patient($_POST["edit_ID"], $_POST["edit_fname"], $_POST["edit_lname"], $_POST["edit_gender"], $_POST["edit_dob"], $_POST["edit_age"], $_POST["edit_address"], $_POST["edit_email"], $_POST["edit_phone"]);
         
         echo "\n Edit Patient called successfully.";
     break;
