@@ -46,6 +46,8 @@
     <input type="text" name="email" id="" placeholder="Email Address"></input>
     <label for="phone"><b>Phone</b></label>
     <input type="text" name="phone" placeholder="Phone Number"></input>
+    <label for="affiction"><b>Affliction</b></label>
+    <input type="text" name="affliction" placeholder="Affliction/Condition"></input>
     <!-- <button type="submit" name="insert" value="Insert" class="btn  patientbtn">Insert</button>
     <button  type="submit" name="view" value="View" class="btn  patientbtn">View</button> -->
     <div class="row justify-content-center">

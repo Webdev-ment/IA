@@ -50,6 +50,7 @@ require_once ("PatientModel.php");
           Address: <input type="text" name="edit_address">
           Email: <input type="text" name="edit_email">
           Phone: <input type="text" name="edit_phone">
+          Affliction: <input type="text" name="edit_affliction">
 
           <input type="submit" name="edit" value="Edit">
         </form>

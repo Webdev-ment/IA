@@ -15,8 +15,8 @@ class PatientModel
         $servername = "localhost";
         $username = "root";
         $password = "";
-        //$dbname = "project";
-        $dbname = "ia_proj";
+        $dbname = "project";
+        //$dbname = "ia_proj";
 
         echo "\nConnect called Successfully.";
 
@@ -50,7 +50,8 @@ class PatientModel
             pat_age INT(3) NOT NULL,
             pat_address char(30) NOT NULL,
             pat_email char(30) NOT NULL,
-            pat_phone char(10) NOT NULL)";
+            pat_phone char(10) NOT NULL,
+            pat_affliction char(60) NOT NULL)";
 
             if ($this->conn->query($CreateTable) === TRUE)
             {
@@ -63,19 +64,19 @@ class PatientModel
     }
 
     // Function that adds Patient data to the database.
-    public function InsertPatient(string $fname, string $lname, string $gender, string $dob, int $age, string $address, string $email, string $phone)
+    public function InsertPatient(string $fname, string $lname, string $gender, string $dob, int $age, string $address, string $email, string $phone, string $affliction)
     {
         echo "\n Insert Patient successfully called.";
 
         //Checks to ensure the fields sent aren't empty.
-        if(empty($fname) || empty($lname) || empty($gender) || empty($dob) || empty($age) || empty($address) || empty($email) || empty($phone))
+        if(empty($fname) || empty($lname) || empty($gender) || empty($dob) || empty($age) || empty($address) || empty($email) || empty($phone) || empty($affliction))
         {
             $error["Required"] = "\nAll fields are Required!";
         }
         else
         {   
             // Values are inserted into the Patient table.
-            $Insert = "INSERT INTO Patient (pat_fname, pat_lname, pat_gender, pat_dob, pat_age, pat_address, pat_email, pat_phone) VALUES ('$fname', '$lname', '$gender', '$dob', '$age', '$address', '$email', '$phone')";
+            $Insert = "INSERT INTO Patient (pat_fname, pat_lname, pat_gender, pat_dob, pat_age, pat_address, pat_email, pat_phone, pat_affliction) VALUES ('$fname', '$lname', '$gender', '$dob', '$age', '$address', '$email', '$phone', '$affliction')";
                 
             if ($this->conn->query($Insert) === TRUE)
             {
@@ -91,20 +92,20 @@ class PatientModel
     }     
 
     // This Function updates values in the table
-    public function Update_Patient(int $ID, string $fname, string $lname, string $gender, string $dob, int $age, string $address, string $email, string $phone)
+    public function Update_Patient(int $ID, string $fname, string $lname, string $gender, string $dob, int $age, string $address, string $email, string $phone, string $affliction)
     {
         $this->Connect();
 
         echo "Update Patient Called Successfully";
 
         //Checks to ensure the fields sent aren't empty.
-        if(empty($ID) || empty($fname) || empty($lname) || empty($gender) || empty($dob) || empty($age) || empty($address) || empty($email) || empty($phone))
+        if(empty($ID) || empty($fname) || empty($lname) || empty($gender) || empty($dob) || empty($age) || empty($address) || empty($email) || empty($phone) || empty($affliction))
         {
             $error["Required"] = "\n All fields are Required!";
         }
         else
         {
-            $Update = "UPDATE Patient SET pat_fname='$fname', pat_lname='$lname', pat_gender='$gender', pat_dob='$dob', pat_age='$age', pat_address='$address', pat_email='$email', pat_phone='$phone' WHERE pat_id= '$ID' " ;
+            $Update = "UPDATE Patient SET pat_fname='$fname', pat_lname='$lname', pat_gender='$gender', pat_dob='$dob', pat_age='$age', pat_address='$address', pat_email='$email', pat_phone='$phone', pat_affliction='$affliction' WHERE pat_id= '$ID' " ;
 
             // Calls update query.
             if($this->conn->query($Update) === TRUE)
@@ -185,9 +186,12 @@ class PatientModel
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Last Name</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Gender</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Date of Birth</h4> </td>';
+            echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Age</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Address</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Email</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Phone</h4> </td>';
+            echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Affliction</h4> </td>';
+
             // echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Action</h4> </td>';
             echo '</tr>'; 
 
@@ -219,9 +223,11 @@ class PatientModel
                 echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_lname"] . '</td>';
                 echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_gender"] . '</td>';
                 echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_dob"] . '</td>';
+                echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_age"] . '</td>';
                 echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_address"] . '</td>';
                 echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_email"] . '</td>';
                 echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_phone"] . '</td>';
+                echo '<td style="border-bottom:  1px solid #ddd">' . $Patient["pat_affliction"] . '</td>';
 
 
             // echo '<td style="border-bottom:  1px solid #ddd">' . '<input type="submit" name="delete" value="Delete"> ' . '</td>';
