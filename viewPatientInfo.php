@@ -1,3 +1,7 @@
+<?php
+require_once ("PatientModel.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,18 +25,34 @@
       <a class="nav-link disabled" href="#">Disabled</a>
     </li> -->
   </ul>
-
 </nav>
-
 <body class="patientbg" >
 <h1>Patient Record</h1>
+<?php 
+  $Object = new PatientModel();
+  $Object->get_all_Patients();
+?>
 
+  <h2>Delete Patient Record</h2>
+      <form action="PatientController.php" method="POST">
+          <input type="text" name="delete_ID" placeholder="Enter ID of Patient to be deleted">
+          <input type="submit" name="delete" value="Delete">
+      </form>
 
+    <h2>Edit Patient Record</h2>
+      <form action="PatientController.php" method="POST">
+          ID: <input type="text" name="edit_ID" placeholder="Enter ID of Patient to be edited">
+          First Name: <input type="text" name="edit_fname">
+          Last Name: <input type="text" name="edit_lname">
+          Gender: <input type="text" name="edit_gender">
+          Date of Birth: <input type="date" name="edit_dob">
+          Age: <input type="text" name="edit_age">
+          Address: <input type="text" name="edit_address">
+          Email: <input type="text" name="edit_email">
+          Phone: <input type="text" name="edit_phone">
 
-
-
-
-
+          <input type="submit" name="edit" value="Edit">
+        </form>
 
 </body>
 <footer class="bg-warning">
