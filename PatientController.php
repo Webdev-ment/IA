@@ -1,7 +1,7 @@
 <?php
 
 require_once ("PatientModel.php");
-require_once ("View.php");
+require_once ("viewPatientInfo.php");
 
 
 if (!empty($_POST))
@@ -87,7 +87,7 @@ function create_Patient(string $fname, string  $lname, string $gender, string $d
     $Object->CreatePatientTable();
     $Object->InsertPatient($fname, $lname, $gender, $dob, $age, $address, $email, $phone, $affliction);
 
-    header("location: AddPatientInfo.php");
+    // header("location: AddPatientInfo.php");
 
 }
 

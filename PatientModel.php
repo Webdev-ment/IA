@@ -1,6 +1,6 @@
 <?php
 
-require_once ("View.php");
+require_once ("viewPatientInfo.php");
 
 class PatientModel 
 {
@@ -18,7 +18,7 @@ class PatientModel
         //$dbname = "project";
         $dbname = "ia_proj";
 
-        echo "\nConnect called Successfully.";
+        // echo "\nConnect called Successfully.";
 
         // Create connection
         $this->conn = new mysqli($servername, $username, $password, $dbname);
@@ -30,7 +30,7 @@ class PatientModel
         }
         else 
         {
-            echo "\nConnection successful.";
+            // echo "\nConnection successful.";
         }
     } 
 
@@ -161,7 +161,7 @@ class PatientModel
         // $dbname = "project";
         // $dbname = "ia_proj";
 
-        echo "\n Get all called successfully.";
+        // echo "\n Get all called successfully.";
 
         // Create connection
         // $this->conn = new mysqli($servername, $username, $password, $dbname);
@@ -233,7 +233,7 @@ class PatientModel
             // echo '<td style="border-bottom:  1px solid #ddd">' . '<input type="submit" name="delete" value="Delete"> ' . '</td>';
             }
         
-        echo "Fetched data successfully.";
+        // echo "Fetched data successfully.";
         } 
 
     }
