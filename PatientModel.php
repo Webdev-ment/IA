@@ -178,7 +178,6 @@ class PatientModel
         // Echoes out a form to display database information in a new page and who's POST data (button presses) will be sent to PatientController.php 
         if ($result->num_rows > 0)
         {
-            echo '<form action="PatientController.php" method="POST" target="__blank">';
             echo '<table style="width: 90%; margin-left: 5%; margin-right: 5%; border-style: solid; cellpadding=1; border-width: 1px; text-align: center; ">';
             echo '<tr>'; 
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Patient ID</h4> </td>';
