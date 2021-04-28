@@ -52,14 +52,9 @@ require_once ("PatientModel.php");
           Phone: <input type="text" name="edit_phone">
           Affliction: <input type="text" name="edit_affliction">
 
-<<<<<<< HEAD
 
 
 
-=======
-          <input type="submit" name="edit" value="Edit">
-        </form>
->>>>>>> 983a613a1c362f91f2f0e2040a635223b9efaeaa
 
 </body>
 <footer class="bg-warning">
