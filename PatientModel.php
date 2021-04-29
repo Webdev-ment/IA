@@ -180,7 +180,7 @@ class PatientModel
         {
             echo '<table style="width: 90%; margin-left: 5%; margin-right: 5%; border-style: solid; cellpadding=1; border-width: 1px; text-align: center; ">';
             echo '<tr>'; 
-            echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Patient ID</h4> </td>';
+            echo '<td style="border-bottom:  1px solid #ddd; color: #8d0404;"> <h4>Patient ID</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>First Name</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Last Name</h4> </td>';
             echo '<td style="border-bottom:  1px solid #ddd;"> <h4>Gender</h4> </td>';
@@ -243,3 +243,4 @@ class PatientModel
    
 
 ?>
+<link rel="stylesheet" href="style.css">

@@ -19,6 +19,19 @@ footer {
   text-shadow: none; /* Prevent inheritance from `body` */
 }
 
+.navi{
+  background-color: #191970 ;
+
+}
+
+.nav-link{
+color: white;
+}
+
+.dropdown-menu{
+background-color: lightskyblue;
+}
+
 .body-bg{
   background-image: url(assets/blood-pressure-monitor-1749577_1280.jpg);
   height: 100%;
@@ -149,3 +162,17 @@ footer {
     background-color: white;
   }
   
+  table {
+    border-spacing: 15px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+td h4 {
+  color: #8d0404;
+}
+
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}

@@ -128,3 +128,4 @@ function delete_Patient(int $ID)
     view_Patient();
 }
 ?>
+
