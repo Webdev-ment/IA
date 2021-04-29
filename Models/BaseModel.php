@@ -8,8 +8,8 @@ abstract class BaseModel extends mysqli {
     protected const host = "localhost";
     protected const user = "root";
     protected const password = "";
-    protected const database = "project";
-    protected const port = "3307";
+    protected const database = "ia_proj";
+    protected const port = "3306";
     protected const password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/';
     
 
