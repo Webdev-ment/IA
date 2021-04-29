@@ -52,10 +52,10 @@
                     </div>  
                     <div class="form-group">
                         <label for="" class="form-label">Occupation</label>
-                        <input class="form-control" list="datalistOptions" id="" placeholder="Type to search...">
+                        <input class="form-control" list="datalistOptions" name="datalistOptions" id="" placeholder="Type to search...">
                         <datalist id="datalistOptions">
-                          <option type="radio" name="user" value="Doctor">
-                          <option type="radio" name="user" value="Receptionist">
+                          <option value="Doctor">
+                          <option value="Receptionist">
                         </datalist>
                     </div>
 
