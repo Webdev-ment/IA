@@ -58,16 +58,16 @@ class Visitation
     }
 
     // Function to add visitations.
-    public function AddVisitation()
+    public function AddVisitation(INT $pat_ID, INT $dct_ID, string $vst_Drug, string $vst_Date, string $vst_Comment)
     {
         // Checks for empty fields.
-        if( empty($vst_ID) || empty($pat_ID) || empty($dct_ID) || empty($vst_Drug) || empty($vst_Date) || empty($vst_Comment))
+        if( empty($pat_ID) || empty($dct_ID) || empty($vst_Drug) || empty($vst_Date) || empty($vst_Comment))
         {
             $error['Required'] = "\n All Fields Required.";
         }
         else {
 
-            $Insert = "INSERT INTO Visitation (vst_ID, pat_ID, dct_ID, vst_Drug, vst_Date, vst_Comment) VALUES ('$vst_ID', '$pat_ID', '$dct_ID', '$vst_Drug', '$vst_Date', '$vst_Comment)";
+            $Insert = "INSERT INTO Visitation (pat_ID, dct_ID, vst_Drug, vst_Date, vst_Comment) VALUES ('$pat_ID', '$dct_ID', '$vst_Drug', '$vst_Date', '$vst_Comment)";
 
             if ($this->conn->query($Insert) === TRUE)
             {
@@ -133,5 +133,57 @@ class Visitation
         }
         $this->conn->close();
      }
+
+     public function DeleteVisitation(int $ID)
+     {
+        $this->Connect();
+
+        $Deleted_ID = $ID;
+
+        if(empty($Deleted_ID))
+        {
+            exit("\n Error, no Visitation ID Found!");
+        }
+
+        echo "\n The index called was:" . $Deleted_ID;
+
+
+        // Defines query to delete record.
+        $Delete = "DELETE FROM Visitation WHERE vt_ID = '$Deleted_ID'";
+
+        // Calls query to delete record.
+        if($this->conn->query($Delete) === TRUE)
+        {
+            echo "\n Visitation deleted successfully!";
+        }
+        else {
+            echo "\n Error deleting record: ". $this->conn->error;
+        }
+     }
+
+     public function UpdateVisitation(INT $vst_ID, INT $pat_ID, INT $dct_ID, string $vst_Drug, string $vst_Date, string $vst_Comment)
+     {
+        $this->Connect();
+
+        if( empty($vst_ID) || empty($pat_ID) || empty($dct_ID) || empty($vst_Drug) || empty($vst_Date) || empty($vst_Comment))
+        {
+            $error['Required'] = "\n All Fields Required.";
+        }    
+        else
+        {
+            $Update = "UPDATE Visitation SET pat_ID='$pat_ID', dct_ID='$dct_ID', vst_Drug='$vst_Drug', vst_Date='$vst_Date', vst_Comment='$vst_Comment' WHERE vst_ID= '$vst_ID' " ;
+
+            // Calls update query.
+            if($this->conn->query($Update) === TRUE)
+            {
+                echo "\n Visitation updated successfully!";
+            }
+            else {
+                echo "\n Error updating record: ". $this->conn->error;
+            }
+        }
+
+     }
+
 }
 ?>
