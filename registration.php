@@ -66,10 +66,10 @@
     <input type="text" name="phone" placeholder="Phone Number">
 
     <label for="occupations" class="form-label"><b>Occupation</b></label>
-    <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+    <input class="form-control" list="datalistOptions" name="datalistOptions" id="exampleDataList" placeholder="Type to search...">
         <datalist id="datalistOptions">
-            <option name="user" value="Doctor" >
-            <option name="user" value="Receptionist">
+            <option value="Doctor" >
+            <option value="Receptionist">
         </datalist> <br>
     
     <label for="psw"><b>Password</b></label>

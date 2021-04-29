@@ -1,5 +1,11 @@
 <?php
-require_once ("PatientModel.php");
+session_start();
+
+if($_SERVER["REQUEST_METHOD"] == "GET") {
+    //User tries to access page without logging in. Send them back to index.php
+    if(!isset($_SESSION["USER"])) header("Location: index.php");
+}
+//require_once ("PatientModel.php");
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +31,12 @@ require_once ("PatientModel.php");
     <li class="nav-item active">
       <a class="nav-link" href="./registration.php">Register</a>
     </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="./profile.php">Profile</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="./logout.php">Log Out</a>
+    </li>
     <li class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Patients
@@ -46,8 +58,8 @@ require_once ("PatientModel.php");
 <h1><center>Patient Record</center></h1>
 <br>
 <?php 
-  $Object = new PatientModel();
-  $Object->get_all_Patients();
+//  $Object = new PatientModel();
+//  $Object->get_all_Patients();
 ?>
 
 <div class="container-sm mx-auto" style="width: 400px;">

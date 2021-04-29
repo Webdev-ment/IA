@@ -6,11 +6,12 @@ require_once("./Controllers/ReceptionistController.php");
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $register_information = array();
 
-    if(!array_key_exists("user",$_POST)) {
-        echo "<h1>Please select a button.</h1>";
+    if(empty($_POST["datalistOptions"])) {
+        echo "<h1>Required to choose an occupation.</h1>";
     }
+    else if(!($_POST["datalistOptions"] == "Doctor") && !($_POST["datalistOptions"] == "Receptionist") ) echo "<h1>Required to choose an occupation.</h1>";
     else {
-        if($_POST["user"] == "Receptionist") {
+        if($_POST["datalistOptions"] == "Receptionist") {
             $register_information = register_receptionist($_POST["fname"],$_POST["lname"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]);
         }
         else $register_information = register_doctor($_POST["fname"],$_POST["lname"],$_POST["address"],$_POST["email"],$_POST["phone"],$_POST["password"],$_POST["confirm"]); 

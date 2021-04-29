@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             //Create session with information here using $session_information["current_user_info"] and redirect user to home.php
             $_SESSION["USER"] = $session_information["current_user_info"]; 
             //header("Location: home.php");
-            header("Location: viewPatientInfo.php");
+            header("Location: home.php");
         }
         else {
             //redirect to page with the errors presented using $session_information["messages"]
