@@ -12,7 +12,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST["datalistOptions"])) {
         echo "<h1>Required to choose an occupation.</h1>";
     }
-    if(!($_POST["datalistOptions"] == "Doctor") && !($_POST["datalistOptions"] == "Receptionist") ) echo "<h1>Required to choose an occupation.</h1>";
+    else if(!($_POST["datalistOptions"] == "Doctor") && !($_POST["datalistOptions"] == "Receptionist") ) echo "<h1>Required to choose an occupation.</h1>";
     else {
         if($_POST["datalistOptions"] == "Receptionist") $session_information = login_receptionist($_POST["email"],$_POST["password"]);
         else $session_information = login_doctor($_POST["email"],$_POST["password"]);
