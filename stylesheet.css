@@ -39,8 +39,17 @@ footer {
   max-width: 42em;
 }
 
-.card{
-    background-color: ;
+.navi{
+    background-color: #191970 ;
+
+}
+
+.nav-link{
+  color: white;
+}
+
+.dropdown-menu{
+  background-color: lightskyblue;
 }
 
 .right {
@@ -52,7 +61,8 @@ footer {
   }
 
   .p-d{
-      padding: 100px;
+      /* padding-top: 50px; */
+      padding: 50px;;
   }
 
 
