@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +45,8 @@
 </nav>
 
 </nav>
+
+
 <body class="bg-dark registerbg" >
 
 <form action="./register.php" method="POST" >
@@ -52,18 +59,48 @@
 
     <label for="fname"><b>First Name</b></label>
     <input type="text" name="fname" placeholder="First Name">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
 
     <label for="lname"><b>Last Name</b></label>
     <input type="text" name="lname" placeholder="Last Name">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
 
     <label for="address"><b>Address</b></label>
     <input type="text" name="address" placeholder="Address">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
 
     <label for="email"><b>Email Address</b></label>
     <input type="text" name="email" id="" placeholder="Email Address">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
+    <?php if(!empty($_SESSION["register_errors"]["Email"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Email already taken.
+    </div>
+    <?php endif; ?>
 
     <label for="phone"><b>Phone</b></label>
     <input type="text" name="phone" placeholder="Phone Number">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
 
     <label for="occupations" class="form-label"><b>Occupation</b></label>
     <input class="form-control" list="datalistOptions" name="datalistOptions" id="exampleDataList" placeholder="Type to search...">
@@ -71,12 +108,38 @@
             <option value="Doctor" >
             <option value="Receptionist">
         </datalist> <br>
+    <?php if(!empty($_SESSION["register_errors"]["Occupation"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please select an occupation.
+    </div>
+    <?php endif; ?>
     
     <label for="psw"><b>Password</b></label>
     <input type="password" name="password" id="" placeholder="Password">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
+    <?php if(!empty($_SESSION["register_errors"]["Strength"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Password is not strong enough. Must contain the following: A minimum length of 8 characters, at least one digit, special character and uppercase letter.
+    </div>
+    <?php endif; ?>
+    
 
     <label for="psw-repeat"><b>Confirm Password</b></label>
     <input type="password" name="confirm" id="" placeholder="Confirm Password">
+    <?php if(!empty($_SESSION["register_errors"]["Required"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Please enter all fields.
+    </div>
+    <?php endif; ?>
+    <?php if(!empty($_SESSION["register_errors"]["Password"])) : ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    Password and Confirm Password must be the same.
+    </div>
+    <?php endif; ?>
 
     <button type="submit" value="Sign Up" class="btn btn-warning registerbtn">Register</button>
   </div>

@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+require_once("./Models/DoctorModel.php");
+require_once("./Models/ReceptionistModel.php");
+
+$receptionist_connection = new ReceptionistModel();
+$doctor_connection = new DoctorModel();
+
+$receptionist_connection->create_table();
+$doctor_connection->create_table();
+?>
+
 <html>
 <head>
 <title>Home</title>
@@ -44,11 +57,31 @@
                     <div class="form-group" >
                         <label for="">Email</label>
                         <input type="email" class="form-control" name="email" id="" aria-describedby="emailHelp">
+                        <?php if(!empty($_SESSION["login_errors"]["Required"])) : ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Please enter all fields.
+                        </div>
+                        <?php endif; ?>
+                        <?php if(!empty($_SESSION["login_errors"]["Credentials"])) : ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Invalid Credentials.
+                        </div>
+                        <?php endif; ?>  
                         
                     </div>
                     <div class="form-group">
                         <label for="">Password</label>
-                        <input type="password" name="password" class="form-control" id="">                     
+                        <input type="password" name="password" class="form-control" id="">
+                        <?php if(!empty($_SESSION["login_errors"]["Required"])) : ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Please enter all fields.
+                        </div>
+                        <?php endif; ?>
+                        <?php if(!empty($_SESSION["login_errors"]["Credentials"])) : ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Invalid Credentials.
+                        </div>
+                        <?php endif; ?>                     
                     </div>  
                     <div class="form-group">
                         <label for="" class="form-label">Occupation</label>
@@ -61,6 +94,12 @@
 
                     <!-- <input type="radio" name="user"  value="receptionist" id=""> Receptionist <br> <br>
                     <input type="radio" name="user" value="doctor" id=""> Doctor -->
+                    
+                    <?php if(!empty($_SESSION["login_errors"]["Occupation"])) : ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Please select an occupation.
+                        </div>
+                    <?php endif; ?>
                     <br>
                     <button type="submit" class="btn btn-warning">Login</button>
                     

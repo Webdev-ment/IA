@@ -8,7 +8,8 @@ abstract class BaseModel extends mysqli {
     protected const host = "localhost";
     protected const user = "root";
     protected const password = "";
-    protected const database = "project";
+    protected const database = "second";
+    //protected const database = "project";
     protected const port = "3307";
     protected const password_regex = '/^(?=.*[!@#$%^&*-])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/';
     
@@ -54,6 +55,8 @@ abstract class BaseModel extends mysqli {
     abstract protected function register(string $fname, string $lname, string $address, string $email, string $phone, string $password, string $confirm): array;
 
     abstract protected function get_all(): array;
+
+    abstract protected function create_table();
 
     abstract protected function get_current_user($id): array;
 
