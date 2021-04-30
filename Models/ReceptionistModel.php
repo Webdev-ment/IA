@@ -127,6 +127,19 @@ class ReceptionistModel extends BaseModel {
     }
 
 
+    public function create_table() {
+        $stmt = $this->prepare("create table if not exists receptionist (
+            rcp_id int(6) unsigned auto_increment primary key,
+            rcp_fname varchar(30) COLLATE utf8_unicode_ci not null,
+            rcp_lname varchar(30) COLLATE utf8_unicode_ci not null,
+            rcp_address varchar(30) COLLATE utf8_unicode_ci not null,
+            rcp_email varchar(30) COLLATE utf8_unicode_ci not null,
+            rcp_phone varchar(30) COLLATE utf8_unicode_ci not null,
+            rcp_password varchar(100) COLLATE utf8_unicode_ci not null)");
+
+        $stmt->execute();
+    }
+
     /**
      * Gets all the receptionists and their information.
      * @return array All receptionists.

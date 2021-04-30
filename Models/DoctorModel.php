@@ -125,6 +125,19 @@ class DoctorModel extends BaseModel {
         return $info;
     }
 
+    public function create_table() {
+        $stmt = $this->prepare("create table if not exists doctor (
+            dct_id int(6) unsigned COLLATE utf8_unicode_ci auto_increment primary key,
+            dct_fname varchar(30) COLLATE utf8_unicode_ci not null,
+            dct_lname varchar(30) COLLATE utf8_unicode_ci not null,
+            dct_address varchar(30) COLLATE utf8_unicode_ci not null,
+            dct_email varchar(30) COLLATE utf8_unicode_ci not null,
+            dct_phone varchar(30) COLLATE utf8_unicode_ci not null,
+            dct_password varchar(100) COLLATE utf8_unicode_ci not null)");
+            
+        $stmt->execute();
+    }
+
     /**
      * Gets all the doctors and their information.
      * @return array All doctors.
