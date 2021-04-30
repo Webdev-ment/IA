@@ -46,14 +46,14 @@
             <h1>Add Visitation</h1>
             <hr>
             <div class="form-group row">
-                    <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                     <label for=""><b>Visitation ID</b></label>
                     <input type="text" name="pat_ID" placeholder="Eg. 0 ">
-                    </div>
+                    </div> -->
 
                     <div class="col-sm-6">
                     <label for=""><b>Patient ID</b></label>
-                    <input type="text" name="edit_fname" placeholder="Eg. Mary">
+                    <input type="text" name="pat_ID" placeholder="Eg. Mary">
                     </div>
 
                     <div class="col-sm-6">

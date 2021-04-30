@@ -10,7 +10,7 @@ switch (true)
     case isset($_POST['insert']): // Runs if the insert button is click.
         echo "\n Insert detected successfully";
 
-        CreateVisitation($pat_ID, $dct_ID, $vst_Drug, $vst_Date, $vst_Comment);
+        CreateVisitation($_POST['pat_ID'], $_POST['dct_ID'], $_POST['vst_Drug'], $_POST['vst_Date'], $_POST['vst_Comment']);
 
     break;
 
@@ -23,7 +23,7 @@ switch (true)
     case isset($_POST['edit']): // Runs if the edit button is click.
         echo "\n Edit detected successfully";
 
-        UpdateVisitation($_POST["vst_ID"], $_POST["pat_ID"], $_POST["dct_ID"], $_POST["vst_Drug"], $_POST["vst_Date"], $_POST["vst_Comment"]);
+        UpdateVisitation($_POST['vst_ID'], $_POST['pat_ID'], $_POST['dct_ID'], $_POST['vst_Drug'], $_POST['vst_Date'], $_POST['vst_Comment']);
     break;
 
     case isset($_POST['delete']): // Runs if the delete button is click.

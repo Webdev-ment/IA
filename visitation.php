@@ -96,10 +96,10 @@ require_once ("VisitationModel.php");
             <input type="text" name="pat_ID" placeholder="Eg. 0 ">
             </div>
 
-            <div class="col-sm-4">
+            <!-- <div class="col-sm-4">
             <label for=""><b>Patient ID</b></label>
             <input type="text" name="edit_fname" placeholder="Eg. Mary">
-            </div>
+            </div> -->
 
             <div class="col-sm-4">
             <label for=""><b>Doctor ID</b></label>
